@@ -21,7 +21,7 @@ if(isset($_POST['order'])){
    $email = filter_var($email, FILTER_SANITIZE_STRING);
    $method = $_POST['method'];
    $method = filter_var($method, FILTER_SANITIZE_STRING);
-   $address = 'flat no. '. $_POST['flat'] .', '. $_POST['street'] .', '. $_POST['city'] .', '. $_POST['state'] .', '. $_POST['country'] .' - '. $_POST['pin_code'];
+   $address = $_POST['flat'] .', '. $_POST['street'] .', '. $_POST['city'] .', '. $_POST['state'] .', '. $_POST['country'] .' - '. $_POST['pin_code'];
    $address = filter_var($address, FILTER_SANITIZE_STRING);
    $total_products = $_POST['total_products'];
    $total_price = $_POST['total_price'];
@@ -42,6 +42,10 @@ if(isset($_POST['order'])){
       $message[] = 'your cart is empty';
    }
 
+}
+
+function format_rupiah($angka){
+   return "Rp. " . number_format($angka, 0, ',', '.');
 }
 
 ?>
@@ -79,11 +83,11 @@ if(isset($_POST['order'])){
          $select_cart->execute([$user_id]);
          if($select_cart->rowCount() > 0){
             while($fetch_cart = $select_cart->fetch(PDO::FETCH_ASSOC)){
-               $cart_items[] = $fetch_cart['name'].' ('.$fetch_cart['price'].' x '. $fetch_cart['quantity'].') - ';
+               $cart_items[] = $fetch_cart['name'].' ('.format_rupiah($fetch_cart['price']).' x '. $fetch_cart['quantity'].') - ';
                $total_products = implode($cart_items);
                $grand_total += ($fetch_cart['price'] * $fetch_cart['quantity']);
       ?>
-         <p> <?= $fetch_cart['name']; ?> <span>(<?= 'Rp. '.$fetch_cart['price'].' x '. $fetch_cart['quantity']; ?>)</span> </p>
+         <p> <?= $fetch_cart['name']; ?> <span>(<?= format_rupiah($fetch_cart['price']).' x '. $fetch_cart['quantity']; ?>)</span> </p>
       <?php
             }
          }else{
@@ -92,7 +96,7 @@ if(isset($_POST['order'])){
       ?>
          <input type="hidden" name="total_products" value="<?= $total_products; ?>">
          <input type="hidden" name="total_price" value="<?= $grand_total; ?>" value="">
-         <div class="grand-total">Grand Total : <span>Rp. <?= $grand_total; ?>/-</span></div>
+         <div class="grand-total">Grand Total : <span><?= format_rupiah($grand_total); ?></span></div>
       </div>
 
       <h3>place your orders</h3>

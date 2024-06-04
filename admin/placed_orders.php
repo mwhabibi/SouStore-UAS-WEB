@@ -26,6 +26,10 @@ if(isset($_GET['delete'])){
    header('location:placed_orders.php');
 }
 
+function format_rupiah($angka){
+   return "Rp. " . number_format($angka, 0, ',', '.');
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -56,6 +60,7 @@ if(isset($_GET['delete'])){
       $select_orders->execute();
       if($select_orders->rowCount() > 0){
          while($fetch_orders = $select_orders->fetch(PDO::FETCH_ASSOC)){
+            
    ?>
    <div class="box">
       <p> Placed On : <span><?= $fetch_orders['placed_on']; ?></span> </p>
@@ -63,7 +68,7 @@ if(isset($_GET['delete'])){
       <p> Number : <span><?= $fetch_orders['number']; ?></span> </p>
       <p> Address : <span><?= $fetch_orders['address']; ?></span> </p>
       <p> Total products : <span><?= $fetch_orders['total_products']; ?></span> </p>
-      <p> Total price : <span>Rp. <?= $fetch_orders['total_price']; ?>/-</span> </p>
+      <p> Total price : <span><?= format_rupiah($fetch_orders['total_price']); ?></span> </p>
       <p> Payment method : <span><?= $fetch_orders['method']; ?></span> </p>
       <form action="" method="post">
          <input type="hidden" name="order_id" value="<?= $fetch_orders['id']; ?>">

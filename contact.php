@@ -70,15 +70,6 @@ if (isset($_POST['send'])) {
          <input type="submit" value="send message" name="send" class="btn">
       </form>
 
-
-      <div class="col-md-6">
-         <div class="map-container">
-            <h3>Our Location</h3>
-            <p>Jl. Serayu No.84, Pandean, Taman, Pandean, Kec. Taman, Kota Madiun, Jawa Timur 63133</p>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1977.2201003736018!2d111.5279737!3d-7.6483768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sid!4v1683052653938!5m2!1sen!2sid" width="100%" height="400" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-         </div>
-      </div>
    </section>
 
    <?php include 'components/footer.php'; ?>

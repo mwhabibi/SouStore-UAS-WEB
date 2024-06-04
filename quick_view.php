@@ -12,6 +12,10 @@ if(isset($_SESSION['user_id'])){
 
 include 'components/wishlist_cart.php';
 
+function format_rupiah($angka){
+   return "Rp. " . number_format($angka, 0, ',', '.');
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +67,7 @@ include 'components/wishlist_cart.php';
          <div class="content">
             <div class="name"><?= $fetch_product['name']; ?></div>
             <div class="flex">
-               <div class="price"><span>Rp. </span><?= $fetch_product['price']; ?><span>/-</span></div>
+               <div class="price"><span></span><?= format_rupiah($fetch_product['price']); ?><span></span></div>
                <input type="number" name="qty" class="qty" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="1">
             </div>
             <div class="details"><?= $fetch_product['details']; ?></div>

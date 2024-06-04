@@ -25,6 +25,10 @@ if(isset($_GET['delete_all'])){
    header('location:wishlist.php');
 }
 
+function format_rupiah($angka){
+   return "Rp. " . number_format($angka, 0, ',', '.');
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -64,13 +68,13 @@ if(isset($_GET['delete_all'])){
       <input type="hidden" name="pid" value="<?= $fetch_wishlist['pid']; ?>">
       <input type="hidden" name="wishlist_id" value="<?= $fetch_wishlist['id']; ?>">
       <input type="hidden" name="name" value="<?= $fetch_wishlist['name']; ?>">
-      <input type="hidden" name="price" value="<?= $fetch_wishlist['price']; ?>">
+      <input type="hidden" name="price" value="<?= format_rupiah($fetch_wishlist['price']); ?>">
       <input type="hidden" name="image" value="<?= $fetch_wishlist['image']; ?>">
       <a href="quick_view.php?pid=<?= $fetch_wishlist['pid']; ?>" class="fas fa-eye"></a>
       <img src="uploaded_img/<?= $fetch_wishlist['image']; ?>" alt="">
       <div class="name"><?= $fetch_wishlist['name']; ?></div>
       <div class="flex">
-         <div class="price">Rp. <?= $fetch_wishlist['price']; ?>/-</div>
+         <div class="price"><?= format_rupiah($fetch_wishlist['price']); ?></div>
          <input type="number" name="qty" class="qty" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="1">
       </div>
       <input type="submit" value="add to cart" class="btn" name="add_to_cart">
@@ -85,7 +89,7 @@ if(isset($_GET['delete_all'])){
    </div>
 
    <div class="wishlist-total">
-      <p>Grand Total : <span>Rp. <?= $grand_total; ?>/-</span></p>
+      <p>Grand Total : <span><?= format_rupiah($grand_total); ?></span></p>
       <a href="shop.php" class="option-btn">Continue Shopping.</a>
       <a href="wishlist.php?delete_all" class="delete-btn <?= ($grand_total > 1)?'':'disabled'; ?>" onclick="return confirm('delete all from wishlist?');">delete all item</a>
    </div>

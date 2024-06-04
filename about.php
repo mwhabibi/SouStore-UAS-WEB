@@ -64,7 +64,7 @@ if (isset($_SESSION['user_id'])) {
          <div class="swiper-wrapper">
 
             <div class="swiper-slide slide">
-               <img src="images/pic-1.jpg" alt="">
+               <img src="images/imgHabibi.jpg" alt="">
                <p>"Kami, tim developer Sou Store, bersemangat untuk menghadirkan platform e-commerce elektronik terlengkap dan terpercaya bagi para pelanggan. Website ini dirancang dengan cermat untuk memberikan pengalaman berbelanja yang mudah, nyaman, dan aman. Kami berkomitmen untuk terus berinovasi dan meningkatkan layanan kami agar dapat memenuhi kebutuhan elektronik Anda dengan sebaik-baiknya."</p>
                <br><br>
                <div class="stars">

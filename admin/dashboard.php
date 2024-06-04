@@ -10,6 +10,10 @@ if(!isset($admin_id)){
    header('location:admin_login.php');
 }
 
+function format_rupiah($angka){
+   return "Rp. " . number_format($angka, 0, ',', '.');
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +56,7 @@ if(!isset($admin_id)){
                }
             }
          ?>
-         <h3><span>Rp. </span><?= $total_pendings; ?><span>/-</span></h3>
+         <h3><span></span><?= format_rupiah($total_pendings); ?><span></span></h3>
          <p>Total pendings</p>
          <a href="placed_orders.php" class="btn">See Orders.</a>
       </div>
@@ -68,7 +72,7 @@ if(!isset($admin_id)){
                }
             }
          ?>
-         <h3><span>Rp. </span><?= $total_completes; ?><span>/-</span></h3>
+         <h3><span></span><?= format_rupiah($total_completes); ?><span></span></h3>
          <p>Completed orders</p>
          <a href="placed_orders.php" class="btn">See orders</a>
       </div>
