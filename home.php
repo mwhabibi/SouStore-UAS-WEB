@@ -53,8 +53,8 @@ function format_rupiah($angka){
             <img src="images/home-img-1.png" alt="">
          </div>
          <div class="content">
-            <span>Upto 50% Off</span>
-            <h3>Latest Smartphones</h3>
+            <span>Discount 50% Off</span>
+            <h3>Latest Smartphons</h3>
             <a href="category.php?category=smartphone" class="btn">Shop Now</a>
          </div>
       </div>
@@ -64,8 +64,8 @@ function format_rupiah($angka){
             <img src="images/home-img-2.png" alt="">
          </div>
          <div class="content">
-            <span>Upto 50% off</span>
-            <h3>Latest Watches</h3>
+            <span>Discount 50% off</span>
+            <h3>Latest Watchs</h3>
             <a href="category.php?category=watch" class="btn">Shop Now.</a>
          </div>
       </div>
@@ -75,7 +75,7 @@ function format_rupiah($angka){
             <img src="images/home-img-3.png" alt="">
          </div>
          <div class="content">
-            <span>upto 50% off</span>
+            <span>Discount 50% off</span>
             <h3>Latest headsets</h3>
             <a href="category.php?category=headset" class="btn">Shop Now.</a>
          </div>
